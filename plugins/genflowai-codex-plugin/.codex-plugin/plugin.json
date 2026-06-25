@@ -1,7 +1,7 @@
 {
   "name": "genflowai-codex-plugin",
-  "version": "0.1.0+codex.20260625061814",
-  "description": "Search GenflowAI templates, list your saved workflows, upload assets, run AI creative workflows, and poll async generation results from Codex.",
+  "version": "0.1.0+codex.20260625062719",
+  "description": "Run GenflowAI templates and saved AI creative workflows from Codex for ecommerce product visuals, creators, UGC video ads, and async generation results.",
   "author": {
     "name": "GenflowAI",
     "email": "support@genflowai.io",
@@ -29,13 +29,22 @@
     "ai-ad-creative-generator",
     "image-to-video-ai",
     "text-to-video-ai",
-    "social-media-content"
+    "social-media-content",
+    "shopify-product-photography",
+    "amazon-product-images",
+    "amazon-a-plus-content",
+    "dtc-brand-creative",
+    "creator-tools",
+    "social-commerce",
+    "ai-product-video",
+    "ai-agent-plugin",
+    "workflow-builder"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "GenflowAI",
     "shortDescription": "Run AI creative workflows from Codex.",
-    "longDescription": "GenflowAI helps Codex discover reusable AI creative workflow templates for ecommerce product visuals, AI product photography, UGC video ads, AI ad creatives, product video generation, image-to-video workflows, text-to-video workflows, fashion editorials, jewelry campaigns, perfume visuals, Amazon assets, and social media content. With a GenflowAI API key from GenflowAI Studio > User Profile > API Key, the plugin can list the user's saved workflows, inspect each workflow input schema, upload image, video, and audio assets, start async template or saved workflow runs, poll status, inspect run progress, and return generated image/video/audio/text outputs. If no saved workflow matches, Codex should guide the user to create one in GenflowAI Studio.",
+    "longDescription": "GenflowAI helps Codex discover and run reusable AI creative workflow templates for ecommerce sellers, Shopify stores, Amazon sellers, DTC brands, creators, agencies, and marketing teams. It supports AI product photography, ecommerce product visuals, Amazon A+ content, UGC video ads, AI ad creatives, product video generation, image-to-video workflows, text-to-video workflows, fashion editorials, jewelry campaigns, perfume visuals, social media content, and repeatable creative automation. With a GenflowAI API key from GenflowAI Studio > User Profile > API Key, the plugin can list the user's saved workflows, inspect each workflow input schema, upload image, video, and audio assets, start async template or saved workflow runs, poll status, inspect run progress, and return generated image/video/audio/text outputs. If no saved workflow matches, Codex should guide the user to create one in GenflowAI Studio.",
     "developerName": "GenflowAI",
     "category": "AI & Automation",
     "capabilities": [
@@ -50,8 +59,9 @@
     "composerIcon": "./assets/icon.png",
     "logo": "./assets/logo.png",
     "defaultPrompt": [
-      "Find a GenflowAI template for AI product photography",
+      "Find a GenflowAI template for Shopify or Amazon product photography",
       "List my GenflowAI workflows and their required inputs",
+      "Upload my product image and run a saved GenflowAI workflow",
       "Check the status of my GenflowAI generation task"
     ]
   },

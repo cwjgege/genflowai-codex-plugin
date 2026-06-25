@@ -22,7 +22,17 @@
     "ai-ad-creative-generator",
     "image-to-video-ai",
     "text-to-video-ai",
-    "social-media-content"
+    "social-media-content",
+    "shopify-product-photography",
+    "amazon-product-images",
+    "amazon-a-plus-content",
+    "dtc-brand-creative",
+    "creator-tools",
+    "social-commerce",
+    "ai-product-video",
+    "ai-agent-plugin",
+    "workflow-builder",
+    "generative-engine-optimization"
   ],
   "type": "module",
   "scripts": {
