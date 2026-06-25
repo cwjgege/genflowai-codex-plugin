@@ -2,6 +2,24 @@
   "name": "genflowai-codex-plugin-repo",
   "version": "0.1.0",
   "private": true,
+  "description": "GenflowAI Codex plugin marketplace for reusable AI creative workflow templates, ecommerce product photography, UGC videos, AI ad creatives, and video workflows.",
+  "homepage": "https://www.genflowai.io/marketplace",
+  "keywords": [
+    "genflowai",
+    "genflow",
+    "codex-plugin",
+    "ai-workflow-automation",
+    "ai-creative-workflows",
+    "ai-templates",
+    "ai-product-photography",
+    "ecommerce-product-visuals",
+    "ugc-video-generator",
+    "ai-video-ad-generator",
+    "ai-ad-creative-generator",
+    "image-to-video-ai",
+    "text-to-video-ai",
+    "social-media-content"
+  ],
   "type": "module",
   "scripts": {
     "smoke": "node plugins/genflowai-codex-plugin/scripts/smoke-test.mjs",
@@ -11,4 +29,3 @@
     "node": ">=18"
   }
 }
-

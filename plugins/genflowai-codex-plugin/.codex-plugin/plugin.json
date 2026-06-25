@@ -1,7 +1,7 @@
 {
   "name": "genflowai-codex-plugin",
-  "version": "0.1.0+codex.20260625053735",
-  "description": "Discover and run GenflowAI creative workflow templates from Codex.",
+  "version": "0.1.0+codex.20260625054720",
+  "description": "Find GenflowAI templates for reusable AI creative workflows, ecommerce product photography, UGC videos, ad creatives, and video workflows from Codex.",
   "author": {
     "name": "GenflowAI",
     "email": "support@genflowai.io",
@@ -12,17 +12,30 @@
   "license": "MIT",
   "keywords": [
     "genflowai",
+    "genflow",
+    "codex-plugin",
+    "mcp-server",
     "ai-templates",
+    "ai-workflow-automation",
     "creative-workflows",
+    "ai-creative-workflows",
     "ecommerce",
+    "ecommerce-product-visuals",
     "video-generation",
-    "product-photography"
+    "product-photography",
+    "ai-product-photography",
+    "ugc-video-generator",
+    "ai-video-ad-generator",
+    "ai-ad-creative-generator",
+    "image-to-video-ai",
+    "text-to-video-ai",
+    "social-media-content"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "GenflowAI",
-    "shortDescription": "Find and launch GenflowAI creative templates.",
-    "longDescription": "GenflowAI helps Codex discover ready-to-use AI workflow templates for ecommerce product visuals, UGC videos, ad creatives, fashion editorials, jewelry, perfume, and other creative production tasks. The plugin searches the live GenflowAI marketplace and prepares run links users can open to generate assets in GenflowAI.",
+    "shortDescription": "Find reusable AI creative workflow templates.",
+    "longDescription": "GenflowAI helps Codex discover reusable AI creative workflow templates for ecommerce product visuals, AI product photography, UGC video ads, AI ad creatives, product video generation, image-to-video workflows, text-to-video workflows, fashion editorials, jewelry campaigns, perfume visuals, Amazon assets, and social media content. The plugin searches the live GenflowAI marketplace and prepares launch links users can open in GenflowAI Studio.",
     "developerName": "GenflowAI",
     "category": "AI & Automation",
     "capabilities": [
@@ -36,9 +49,9 @@
     "composerIcon": "./assets/icon.png",
     "logo": "./assets/logo.png",
     "defaultPrompt": [
-      "Find a GenflowAI template for Amazon product photos",
-      "Prepare a GenflowAI UGC video template run",
-      "List GenflowAI templates for jewelry ads"
+      "Find a GenflowAI template for AI product photography",
+      "Prepare a GenflowAI UGC video ad workflow",
+      "List GenflowAI templates for ecommerce videos"
     ]
   },
   "mcpServers": "./.mcp.json"
