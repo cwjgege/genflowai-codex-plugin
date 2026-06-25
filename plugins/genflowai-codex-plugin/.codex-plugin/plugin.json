@@ -1,7 +1,7 @@
 {
   "name": "genflowai-codex-plugin",
-  "version": "0.1.0+codex.20260625054720",
-  "description": "Find GenflowAI templates for reusable AI creative workflows, ecommerce product photography, UGC videos, ad creatives, and video workflows from Codex.",
+  "version": "0.1.0+codex.20260625060528",
+  "description": "Search GenflowAI templates, upload assets, run AI creative workflows, and poll async image/video generation results from Codex.",
   "author": {
     "name": "GenflowAI",
     "email": "support@genflowai.io",
@@ -34,12 +34,13 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "GenflowAI",
-    "shortDescription": "Find reusable AI creative workflow templates.",
-    "longDescription": "GenflowAI helps Codex discover reusable AI creative workflow templates for ecommerce product visuals, AI product photography, UGC video ads, AI ad creatives, product video generation, image-to-video workflows, text-to-video workflows, fashion editorials, jewelry campaigns, perfume visuals, Amazon assets, and social media content. The plugin searches the live GenflowAI marketplace and prepares launch links users can open in GenflowAI Studio.",
+    "shortDescription": "Run AI creative workflows from Codex.",
+    "longDescription": "GenflowAI helps Codex discover reusable AI creative workflow templates for ecommerce product visuals, AI product photography, UGC video ads, AI ad creatives, product video generation, image-to-video workflows, text-to-video workflows, fashion editorials, jewelry campaigns, perfume visuals, Amazon assets, and social media content. With a GenflowAI API key, the plugin can upload image, video, and audio assets, start async template or saved workflow runs, poll status, inspect run progress, and return generated image/video/audio/text outputs.",
     "developerName": "GenflowAI",
     "category": "AI & Automation",
     "capabilities": [
       "Read",
+      "Write",
       "Interactive"
     ],
     "websiteURL": "https://www.genflowai.io",
@@ -50,8 +51,8 @@
     "logo": "./assets/logo.png",
     "defaultPrompt": [
       "Find a GenflowAI template for AI product photography",
-      "Prepare a GenflowAI UGC video ad workflow",
-      "List GenflowAI templates for ecommerce videos"
+      "Upload a product image and run a GenflowAI template",
+      "Check the status of my GenflowAI generation task"
     ]
   },
   "mcpServers": "./.mcp.json"
