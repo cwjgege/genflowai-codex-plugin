@@ -170,3 +170,12 @@ npm run mcp
 ## Current Integration Level
 
 Public marketplace search works from GenflowAI's public pages. Direct execution uses GenflowAI OpenAPI endpoints for authenticated upload signing, saved workflow listing, workflow schema inspection, template/workflow run creation, status polling, and result URLs.
+
+## OpenAI Directory Submission
+
+Submission materials for the ChatGPT App Directory and Codex Plugin Directory review path are prepared in:
+
+- [OpenAI directory submission draft](docs/openai-directory-submission.md)
+- [中文提交执行清单](docs/openai-directory-checklist.zh-CN.md)
+
+The current public repository supports GitHub marketplace installation. For OpenAI public directory review, GenflowAI also needs a hosted HTTPS Apps SDK/MCP endpoint such as `https://www.genflowai.io/mcp`; the existing local Codex MCP server is ready to adapt into that hosted endpoint.
