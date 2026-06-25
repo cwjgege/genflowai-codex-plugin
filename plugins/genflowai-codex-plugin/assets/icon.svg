@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260">
+  <defs>
+    <linearGradient id="fluidCyan" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00E5FF" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+    <linearGradient id="fluidPink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF2E93" />
+      <stop offset="100%" stop-color="#7C3AED" />
+    </linearGradient>
+    <linearGradient id="fluidAmber" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#E11D48" />
+    </linearGradient>
+    <linearGradient id="glassHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95" />
+      <stop offset="35%" stop-color="#FFFFFF" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  <g transform="translate(10, 15)">
+    <g style="mix-blend-mode: multiply;">
+      <path
+        d="M 60,170 C 40,90 120,30 180,80 C 220,110 190,180 140,180"
+        fill="none"
+        stroke="url(#fluidCyan)"
+        stroke-width="40"
+        stroke-linecap="round"
+        opacity="0.95"
+      />
+      <path
+        d="M 180,40 C 100,10 40,80 50,140 C 60,190 150,210 190,140"
+        fill="none"
+        stroke="url(#fluidPink)"
+        stroke-width="26"
+        stroke-linecap="round"
+        opacity="0.95"
+      />
+      <path
+        d="M 30,120 C 60,190 190,180 200,110 C 210,60 140,40 100,70"
+        fill="none"
+        stroke="url(#fluidAmber)"
+        stroke-width="14"
+        stroke-linecap="round"
+        opacity="0.95"
+      />
+    </g>
+    <g transform="translate(-3, -4)" opacity="0.75">
+      <path
+        d="M 60,170 C 40,90 120,30 180,80 C 220,110 190,180 140,180"
+        fill="none"
+        stroke="url(#glassHighlight)"
+        stroke-width="12"
+        stroke-linecap="round"
+      />
+      <path
+        d="M 180,40 C 100,10 40,80 50,140 C 60,190 150,210 190,140"
+        fill="none"
+        stroke="url(#glassHighlight)"
+        stroke-width="8"
+        stroke-linecap="round"
+      />
+      <path
+        d="M 30,120 C 60,190 190,180 200,110 C 210,60 140,40 100,70"
+        fill="none"
+        stroke="url(#glassHighlight)"
+        stroke-width="4"
+        stroke-linecap="round"
+      />
+    </g>
+    <path
+      d="M 205, 15 Q 205, 35 225, 35 Q 205, 35 205, 55 Q 205, 35 185, 35 Q 205, 35 205, 15 Z"
+      fill="#FFFFFF"
+    />
+  </g>
+</svg>

@@ -1,6 +1,6 @@
 {
   "name": "genflowai-codex-plugin",
-  "version": "0.1.0",
+  "version": "0.1.0+codex.20260625053735",
   "description": "Discover and run GenflowAI creative workflow templates from Codex.",
   "author": {
     "name": "GenflowAI",
@@ -32,7 +32,9 @@
     "websiteURL": "https://www.genflowai.io",
     "privacyPolicyURL": "https://www.genflowai.io/privacy",
     "termsOfServiceURL": "https://www.genflowai.io/terms",
-    "brandColor": "#111827",
+    "brandColor": "#2563EB",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
     "defaultPrompt": [
       "Find a GenflowAI template for Amazon product photos",
       "Prepare a GenflowAI UGC video template run",
