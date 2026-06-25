@@ -11,6 +11,8 @@ const OPENAPI_BASE_URL = (
   process.env.GENFLOWAI_OPENAPI_BASE_URL || `${BASE_URL}/openapi/v1`
 ).replace(/\/+$/, "");
 const API_KEY = process.env.GENFLOWAI_API_KEY || "";
+const STUDIO_URL = `${BASE_URL}/studio`;
+const WORKFLOW_BUILDER_URL = `${BASE_URL}/studio/workflow/new`;
 const CACHE_TTL_MS = 10 * 60 * 1000;
 const DEFAULT_TIMEOUT_MS = 15000;
 const DEFAULT_POLL_INTERVAL_MS = 5000;
@@ -266,10 +268,14 @@ const tools = [
   {
     name: "genflowai_list_my_workflows",
     description:
-      "List saved GenflowAI workflows owned by the API key user, including input fields. Requires GENFLOWAI_API_KEY.",
+      "List saved GenflowAI workflows owned by the API key user, including input fields and onboarding guidance when none match. Requires GENFLOWAI_API_KEY.",
     inputSchema: {
       type: "object",
       properties: {
+        query: {
+          type: "string",
+          description: "Optional workflow search terms, for example product photo, UGC ad, jewelry campaign, or video."
+        },
         limit: {
           type: "integer",
           minimum: 1,
@@ -411,9 +417,45 @@ async function fetchText(url, timeoutMs = DEFAULT_TIMEOUT_MS) {
 function requireApiKey() {
   if (!API_KEY) {
     throw new Error(
-      "GENFLOWAI_API_KEY is required for uploads, template runs, workflow runs, and result polling."
+      `GENFLOWAI_API_KEY is required for uploads, workflow runs, and result polling. Generate or copy it in GenflowAI Studio > User Profile > API Key, then set it as the GENFLOWAI_API_KEY environment variable. Open Studio: ${STUDIO_URL}`
     );
   }
+}
+
+function workflowGuidance({ reason = "workflow_missing", query = "" } = {}) {
+  const cleanQuery = String(query || "").trim();
+  const message =
+    reason === "no_saved_workflows"
+      ? "No saved GenflowAI workflows were found for this API key. Create a workflow in GenflowAI Studio, save it, then run this tool again."
+      : cleanQuery
+        ? `No saved GenflowAI workflow matched "${cleanQuery}". Create a matching workflow in GenflowAI Studio or adjust your search terms.`
+        : "No matching saved GenflowAI workflow was found. Create a matching workflow in GenflowAI Studio or list all workflows first.";
+
+  return {
+    message,
+    createWorkflowUrl: WORKFLOW_BUILDER_URL,
+    studioUrl: STUDIO_URL,
+    apiKeyLocation:
+      "GenflowAI Studio > User Profile > API Key. Use Refresh to generate or rotate the key, then Copy it into GENFLOWAI_API_KEY.",
+    suggestedNextSteps: [
+      "Open the workflow builder and create a reusable workflow with clearly named inputs.",
+      "Save the workflow in GenflowAI Studio.",
+      "Run genflowai_list_my_workflows again, then genflowai_get_workflow_schema for the selected genflowId.",
+      "Upload required assets and run genflowai_run_workflow."
+    ]
+  };
+}
+
+function workflowRunGuidance(genflowId = "") {
+  return {
+    genflowId,
+    createWorkflowUrl: WORKFLOW_BUILDER_URL,
+    studioUrl: STUDIO_URL,
+    apiKeyLocation:
+      "GenflowAI Studio > User Profile > API Key. Copy this key into GENFLOWAI_API_KEY before using authenticated plugin tools.",
+    note:
+      "If you do not know the genflowId or required input fields, call genflowai_list_my_workflows and genflowai_get_workflow_schema first."
+  };
 }
 
 function openApiUrl(path, query = {}) {
@@ -703,7 +745,9 @@ async function runTemplateApi(args = {}) {
 async function runWorkflowApi(args = {}) {
   const genflowId = String(args.genflowId || "").trim();
   if (!genflowId) {
-    throw new Error("Provide a GenflowAI saved workflow genflowId.");
+    throw new Error(
+      `Provide a GenflowAI saved workflow genflowId. Use genflowai_list_my_workflows first, or create one here: ${WORKFLOW_BUILDER_URL}`
+    );
   }
   const prepared = await uploadAssetsAndMergeInput(args.input, args.assets);
   const started = await apiFetch("/genflow/workflows/run", {
@@ -720,6 +764,7 @@ async function runWorkflowApi(args = {}) {
     uploadedAssets: prepared.uploadedAssets,
     statusUrl: runId ? statusUrl(runId) : "",
     processUrl: runId ? processUrl(runId) : "",
+    guidance: workflowRunGuidance(genflowId),
     note: "The workflow run is asynchronous. Poll genflowai_get_task_status or genflowai_get_task_result with the runId."
   };
   if (args.poll && runId) {
@@ -732,23 +777,81 @@ async function runWorkflowApi(args = {}) {
 }
 
 async function listMyWorkflowsApi(args = {}) {
-  return apiFetch("/genflow/workflows/list", {
+  const query = String(args.query || "").trim();
+  const response = await apiFetch("/genflow/workflows/list", {
     query: {
       limit: clampInteger(args.limit, 20, 1, 100)
     },
     timeoutMs: 30000
   });
+  const allItems = Array.isArray(response.items) ? response.items : [];
+  const items = query ? allItems.filter((item) => workflowMatchesQuery(item, query)) : allItems;
+  const reason = allItems.length ? "no_matching_workflows" : "no_saved_workflows";
+  return {
+    ...response,
+    query,
+    totalSavedWorkflows: allItems.length,
+    matchedWorkflows: items.length,
+    items,
+    guidance: items.length
+      ? {
+          createWorkflowUrl: WORKFLOW_BUILDER_URL,
+          studioUrl: STUDIO_URL,
+          apiKeyLocation:
+            "GenflowAI Studio > User Profile > API Key. Use this key as GENFLOWAI_API_KEY for authenticated Codex plugin tools.",
+          note:
+            "Use genflowai_get_workflow_schema with a selected genflowId before running if the required inputs are unclear."
+        }
+      : workflowGuidance({ reason, query })
+  };
 }
 
 async function getWorkflowSchemaApi(args = {}) {
   const genflowId = String(args.genflowId || "").trim();
   if (!genflowId) {
-    throw new Error("Provide a GenflowAI saved workflow genflowId.");
+    throw new Error(
+      `Provide a GenflowAI saved workflow genflowId. Use genflowai_list_my_workflows first, or create one here: ${WORKFLOW_BUILDER_URL}`
+    );
   }
-  return apiFetch("/genflow/workflows/schema", {
-    query: { genflowId },
-    timeoutMs: 30000
-  });
+  try {
+    const schema = await apiFetch("/genflow/workflows/schema", {
+      query: { genflowId },
+      timeoutMs: 30000
+    });
+    return {
+      ...schema,
+      guidance: workflowRunGuidance(genflowId)
+    };
+  } catch (error) {
+    throw new Error(
+      `${error instanceof Error ? error.message : String(error)} If this workflow no longer exists, call genflowai_list_my_workflows or create a new workflow: ${WORKFLOW_BUILDER_URL}`
+    );
+  }
+}
+
+function workflowMatchesQuery(item, query) {
+  const terms = String(query || "")
+    .toLowerCase()
+    .split(/\s+/)
+    .filter(Boolean);
+  if (!terms.length) return true;
+  const inputFields = Array.isArray(item?.inputFields) ? item.inputFields : [];
+  const haystack = [
+    item?.id,
+    item?.name,
+    item?.description,
+    ...inputFields.flatMap((field) => [
+      field?.name,
+      field?.type,
+      field?.items,
+      field?.description,
+      field?.displayLabel
+    ])
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+  return terms.every((term) => haystack.includes(term));
 }
 
 async function getTaskStatusApi(args = {}) {

@@ -33,7 +33,7 @@ The plugin is intentionally public-safe. It does not include GenflowAI product s
 
 ## API-Backed Runs
 
-Set a GenflowAI API key before using upload or run tools:
+Set a GenflowAI API key before using upload or run tools. Users can generate, refresh, copy, or delete the key in GenflowAI Studio under **User Profile > API Key**:
 
 ```bash
 export GENFLOWAI_API_KEY="your_genflowai_api_key"
@@ -64,6 +64,12 @@ Typical flow:
 3. Upload required product images, reference videos, logos, scripts, or audio.
 4. Start a template/workflow run with the uploaded asset URLs mapped into `input`.
 5. Poll the returned `runId` until the async generation is completed or failed.
+
+If no saved workflow exists, or none match the user's goal, guide them to create one in GenflowAI Studio:
+
+```text
+https://www.genflowai.io/studio/workflow/new
+```
 
 ## Install From This Marketplace
 

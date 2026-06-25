@@ -15,3 +15,5 @@ GenflowAI is an AI creative production platform for reusable workflows, template
 ## Public-Safe Integration
 
 The plugin reads public marketplace metadata from `https://www.genflowai.io` and does not ship GenflowAI private source code, customer data, credentials, or model-provider secrets. Direct uploads and runs require the user to configure `GENFLOWAI_API_KEY`; the plugin sends that key only to GenflowAI OpenAPI endpoints.
+
+Users can generate or copy the API key in GenflowAI Studio under **User Profile > API Key**. If a user has no saved workflow, send them to `https://www.genflowai.io/studio/workflow/new` to build and save one before returning to Codex.
