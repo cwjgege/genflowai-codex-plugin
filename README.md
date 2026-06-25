@@ -1,8 +1,18 @@
 # GenflowAI Codex Plugin
 
+[English](README.md) | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [日本語](README.ja.md)
+
 GenflowAI for Codex helps creators, ecommerce teams, and marketing teams find reusable AI creative workflow templates, list their own saved workflows, inspect required inputs, upload creative assets, start template/workflow runs, and check async generation results without leaving Codex.
 
 Use this Codex plugin to discover and run GenflowAI templates for AI product photography, ecommerce product visuals, UGC video ads, AI ad creatives, image-to-video workflows, text-to-video workflows, product video generation, social media content, and repeatable AI workflow automation.
+
+## Multilingual Summary
+
+简体中文：GenflowAI Codex 插件可以帮助中文用户在 Codex 中搜索 AI 商品摄影、电商视觉、UGC 视频广告、AI 广告创意和视频生成模板，也可以列出自己的 GenflowAI 工作流、查看输入要求、上传素材、启动异步生成任务并获取结果。API Key 可在 GenflowAI Studio 的 User Profile / 个人信息 > API Key 中生成。
+
+繁體中文：GenflowAI Codex 外掛可協助繁體中文使用者在 Codex 中搜尋 AI 商品攝影、電商視覺、UGC 影片廣告、AI 廣告素材與影片生成範本，也能列出自己的 GenflowAI 工作流程、查看輸入需求、上傳素材、啟動非同步生成任務並取得結果。API Key 可在 GenflowAI Studio 的 User Profile / 個人資訊 > API Key 中產生。
+
+日本語：GenflowAI Codex プラグインは、Codex から AI 商品撮影、EC 商品ビジュアル、UGC 動画広告、AI 広告クリエイティブ、動画生成テンプレートを検索し、自分の GenflowAI ワークフローの一覧表示、入力スキーマ確認、素材アップロード、非同期生成タスクの実行、結果取得までを支援します。API Key は GenflowAI Studio の User Profile > API Key で生成できます。
 
 ## What GenflowAI Does
 
