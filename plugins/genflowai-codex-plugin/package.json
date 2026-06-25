@@ -2,7 +2,7 @@
   "name": "genflowai-codex-plugin",
   "version": "0.1.0",
   "private": true,
-  "description": "Codex MCP plugin for GenflowAI template search, asset uploads, async workflow runs, ecommerce product photography, UGC video ads, and AI ad creative generation.",
+  "description": "Codex MCP plugin for GenflowAI template search, saved workflow discovery, asset uploads, async workflow runs, ecommerce product photography, UGC video ads, and AI ad creative generation.",
   "homepage": "https://www.genflowai.io/marketplace",
   "keywords": [
     "genflowai",
@@ -12,6 +12,8 @@
     "ai-workflow-automation",
     "async-generation",
     "asset-upload",
+    "workflow-schema",
+    "saved-workflows",
     "ai-creative-workflows",
     "ai-product-photography",
     "ecommerce-product-visuals",

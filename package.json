@@ -2,7 +2,7 @@
   "name": "genflowai-codex-plugin-repo",
   "version": "0.1.0",
   "private": true,
-  "description": "GenflowAI Codex plugin marketplace for searching templates, uploading assets, running AI creative workflows, and polling async generation results.",
+  "description": "GenflowAI Codex plugin marketplace for searching templates, listing saved workflows, uploading assets, running AI creative workflows, and polling async generation results.",
   "homepage": "https://www.genflowai.io/marketplace",
   "keywords": [
     "genflowai",
@@ -11,6 +11,8 @@
     "ai-workflow-automation",
     "async-generation",
     "asset-upload",
+    "workflow-schema",
+    "saved-workflows",
     "ai-creative-workflows",
     "ai-templates",
     "ai-product-photography",

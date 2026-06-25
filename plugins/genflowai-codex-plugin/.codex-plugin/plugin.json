@@ -1,7 +1,7 @@
 {
   "name": "genflowai-codex-plugin",
-  "version": "0.1.0+codex.20260625060528",
-  "description": "Search GenflowAI templates, upload assets, run AI creative workflows, and poll async image/video generation results from Codex.",
+  "version": "0.1.0+codex.20260625061417",
+  "description": "Search GenflowAI templates, list your saved workflows, upload assets, run AI creative workflows, and poll async generation results from Codex.",
   "author": {
     "name": "GenflowAI",
     "email": "support@genflowai.io",
@@ -35,7 +35,7 @@
   "interface": {
     "displayName": "GenflowAI",
     "shortDescription": "Run AI creative workflows from Codex.",
-    "longDescription": "GenflowAI helps Codex discover reusable AI creative workflow templates for ecommerce product visuals, AI product photography, UGC video ads, AI ad creatives, product video generation, image-to-video workflows, text-to-video workflows, fashion editorials, jewelry campaigns, perfume visuals, Amazon assets, and social media content. With a GenflowAI API key, the plugin can upload image, video, and audio assets, start async template or saved workflow runs, poll status, inspect run progress, and return generated image/video/audio/text outputs.",
+    "longDescription": "GenflowAI helps Codex discover reusable AI creative workflow templates for ecommerce product visuals, AI product photography, UGC video ads, AI ad creatives, product video generation, image-to-video workflows, text-to-video workflows, fashion editorials, jewelry campaigns, perfume visuals, Amazon assets, and social media content. With a GenflowAI API key, the plugin can list the user's saved workflows, inspect each workflow input schema, upload image, video, and audio assets, start async template or saved workflow runs, poll status, inspect run progress, and return generated image/video/audio/text outputs.",
     "developerName": "GenflowAI",
     "category": "AI & Automation",
     "capabilities": [
@@ -51,7 +51,7 @@
     "logo": "./assets/logo.png",
     "defaultPrompt": [
       "Find a GenflowAI template for AI product photography",
-      "Upload a product image and run a GenflowAI template",
+      "List my GenflowAI workflows and their required inputs",
       "Check the status of my GenflowAI generation task"
     ]
   },

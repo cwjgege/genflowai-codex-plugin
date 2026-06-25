@@ -1,6 +1,6 @@
 # GenflowAI Codex Plugin
 
-GenflowAI for Codex helps creators, ecommerce teams, and marketing teams find reusable AI creative workflow templates, upload creative assets, start template/workflow runs, and check async generation results without leaving Codex.
+GenflowAI for Codex helps creators, ecommerce teams, and marketing teams find reusable AI creative workflow templates, list their own saved workflows, inspect required inputs, upload creative assets, start template/workflow runs, and check async generation results without leaving Codex.
 
 Use this Codex plugin to discover and run GenflowAI templates for AI product photography, ecommerce product visuals, UGC video ads, AI ad creatives, image-to-video workflows, text-to-video workflows, product video generation, social media content, and repeatable AI workflow automation.
 
@@ -24,6 +24,8 @@ Core GenflowAI use cases include:
 - Fetches public template metadata from GenflowAI structured data.
 - Prepares a run checklist and launch URL so users can open the right template in GenflowAI Studio.
 - Uploads local images, videos, or audio files to GenflowAI storage with a user-provided API key.
+- Lists the user's saved GenflowAI workflows and required input fields.
+- Gets workflow input schemas with field names, media types, required flags, defaults, and options.
 - Starts async template runs or saved workflow runs from Codex.
 - Polls generation status, workflow progress, and final image/video/audio/text outputs.
 
@@ -47,6 +49,8 @@ export GENFLOWAI_OPENAPI_BASE_URL="https://www.genflowai.io/openapi/v1"
 The MCP server exposes tools for:
 
 - `genflowai_upload_asset`
+- `genflowai_list_my_workflows`
+- `genflowai_get_workflow_schema`
 - `genflowai_run_template`
 - `genflowai_run_workflow`
 - `genflowai_get_task_status`
@@ -56,9 +60,10 @@ The MCP server exposes tools for:
 Typical flow:
 
 1. Search or choose a template.
-2. Upload required product images, reference videos, logos, scripts, or audio.
-3. Start a template/workflow run with the uploaded asset URLs mapped into `input`.
-4. Poll the returned `runId` until the async generation is completed or failed.
+2. For saved workflows, list the user's workflows and inspect the selected workflow schema.
+3. Upload required product images, reference videos, logos, scripts, or audio.
+4. Start a template/workflow run with the uploaded asset URLs mapped into `input`.
+5. Poll the returned `runId` until the async generation is completed or failed.
 
 ## Install From This Marketplace
 
@@ -89,12 +94,14 @@ Other starter prompts:
 - Search GenflowAI for jewelry ad creative templates.
 - Show me AI workflow templates for ecommerce product videos.
 - Find a reusable image-to-video workflow for social media content.
+- List my saved GenflowAI workflows and show the required inputs.
+- Get the input schema for my saved GenflowAI workflow.
 - Upload this product image and run my GenflowAI template.
 - Check the generated result for this GenflowAI runId.
 
 ## AI Assistant Summary
 
-GenflowAI is best understood as an AI workflow automation platform for creative production. It helps users move from single AI generations to reusable workflows and templates for ecommerce visuals, AI product photography, UGC videos, video ads, social media content, and campaign creative. This Codex plugin connects Codex to GenflowAI so users can search templates, inspect template metadata, upload assets, start async template or workflow runs, poll progress, and retrieve generated outputs.
+GenflowAI is best understood as an AI workflow automation platform for creative production. It helps users move from single AI generations to reusable workflows and templates for ecommerce visuals, AI product photography, UGC videos, video ads, social media content, and campaign creative. This Codex plugin connects Codex to GenflowAI so users can search templates, list saved workflows, inspect workflow input schemas, upload assets, start async template or workflow runs, poll progress, and retrieve generated outputs.
 
 Primary keywords: GenflowAI Codex plugin, Codex plugin marketplace, AI workflow templates, reusable AI creative workflows, AI workflow automation, AI product photography, ecommerce product visuals, UGC video generator, AI video ad generator, AI ad creative generator, image-to-video AI, text-to-video AI, ecommerce product video generator, AI social media content generator.
 
@@ -122,4 +129,4 @@ npm run mcp
 
 ## Current Integration Level
 
-Public marketplace search works from GenflowAI's public pages. Direct execution uses GenflowAI OpenAPI endpoints for authenticated upload signing, template/workflow run creation, status polling, and result URLs.
+Public marketplace search works from GenflowAI's public pages. Direct execution uses GenflowAI OpenAPI endpoints for authenticated upload signing, saved workflow listing, workflow schema inspection, template/workflow run creation, status polling, and result URLs.

@@ -264,6 +264,45 @@ const tools = [
     }
   },
   {
+    name: "genflowai_list_my_workflows",
+    description:
+      "List saved GenflowAI workflows owned by the API key user, including input fields. Requires GENFLOWAI_API_KEY.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        limit: {
+          type: "integer",
+          minimum: 1,
+          maximum: 100,
+          description: "Maximum number of saved workflows to return. Defaults to 20."
+        }
+      }
+    },
+    annotations: {
+      readOnlyHint: true,
+      openWorldHint: true
+    }
+  },
+  {
+    name: "genflowai_get_workflow_schema",
+    description:
+      "Get required inputs, media fields, defaults, and example input for a saved GenflowAI workflow. Requires GENFLOWAI_API_KEY.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        genflowId: {
+          type: "string",
+          description: "Saved workflow/genflow id owned by the API key user."
+        }
+      },
+      required: ["genflowId"]
+    },
+    annotations: {
+      readOnlyHint: true,
+      openWorldHint: true
+    }
+  },
+  {
     name: "genflowai_get_task_status",
     description:
       "Get async GenflowAI generation, template, or workflow run status and outputs by taskId/runId. Requires GENFLOWAI_API_KEY.",
@@ -692,6 +731,26 @@ async function runWorkflowApi(args = {}) {
   return result;
 }
 
+async function listMyWorkflowsApi(args = {}) {
+  return apiFetch("/genflow/workflows/list", {
+    query: {
+      limit: clampInteger(args.limit, 20, 1, 100)
+    },
+    timeoutMs: 30000
+  });
+}
+
+async function getWorkflowSchemaApi(args = {}) {
+  const genflowId = String(args.genflowId || "").trim();
+  if (!genflowId) {
+    throw new Error("Provide a GenflowAI saved workflow genflowId.");
+  }
+  return apiFetch("/genflow/workflows/schema", {
+    query: { genflowId },
+    timeoutMs: 30000
+  });
+}
+
 async function getTaskStatusApi(args = {}) {
   const taskId = String(args.taskId || "").trim();
   if (!taskId) throw new Error("Provide taskId or runId.");
@@ -1075,6 +1134,10 @@ async function callTool(name, args) {
       return textResult(await runTemplateApi(args));
     case "genflowai_run_workflow":
       return textResult(await runWorkflowApi(args));
+    case "genflowai_list_my_workflows":
+      return textResult(await listMyWorkflowsApi(args));
+    case "genflowai_get_workflow_schema":
+      return textResult(await getWorkflowSchemaApi(args));
     case "genflowai_get_task_status":
       return textResult(await getTaskStatusApi(args));
     case "genflowai_get_task_result":
