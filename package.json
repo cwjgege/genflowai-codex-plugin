@@ -1,0 +1,14 @@
+{
+  "name": "genflowai-codex-plugin-repo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "smoke": "node plugins/genflowai-codex-plugin/scripts/smoke-test.mjs",
+    "mcp": "node plugins/genflowai-codex-plugin/scripts/genflowai-mcp.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
+

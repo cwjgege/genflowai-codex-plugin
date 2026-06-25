@@ -1,0 +1,43 @@
+{
+  "name": "genflowai-codex-plugin",
+  "version": "0.1.0",
+  "description": "Discover and run GenflowAI creative workflow templates from Codex.",
+  "author": {
+    "name": "GenflowAI",
+    "email": "support@genflowai.io",
+    "url": "https://www.genflowai.io"
+  },
+  "homepage": "https://www.genflowai.io/marketplace",
+  "repository": "https://github.com/cwjgege/genflowai-codex-plugin",
+  "license": "MIT",
+  "keywords": [
+    "genflowai",
+    "ai-templates",
+    "creative-workflows",
+    "ecommerce",
+    "video-generation",
+    "product-photography"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "GenflowAI",
+    "shortDescription": "Find and launch GenflowAI creative templates.",
+    "longDescription": "GenflowAI helps Codex discover ready-to-use AI workflow templates for ecommerce product visuals, UGC videos, ad creatives, fashion editorials, jewelry, perfume, and other creative production tasks. The plugin searches the live GenflowAI marketplace and prepares run links users can open to generate assets in GenflowAI.",
+    "developerName": "GenflowAI",
+    "category": "AI & Automation",
+    "capabilities": [
+      "Read",
+      "Interactive"
+    ],
+    "websiteURL": "https://www.genflowai.io",
+    "privacyPolicyURL": "https://www.genflowai.io/privacy",
+    "termsOfServiceURL": "https://www.genflowai.io/terms",
+    "brandColor": "#111827",
+    "defaultPrompt": [
+      "Find a GenflowAI template for Amazon product photos",
+      "Prepare a GenflowAI UGC video template run",
+      "List GenflowAI templates for jewelry ads"
+    ]
+  },
+  "mcpServers": "./.mcp.json"
+}

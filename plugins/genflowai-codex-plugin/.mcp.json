@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "genflowai": {
+      "command": "node",
+      "args": [
+        "./scripts/genflowai-mcp.mjs"
+      ],
+      "cwd": "."
+    }
+  }
+}
