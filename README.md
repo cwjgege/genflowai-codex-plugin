@@ -179,3 +179,14 @@ Submission materials for the ChatGPT App Directory and Codex Plugin Directory re
 - [中文提交执行清单](docs/openai-directory-checklist.zh-CN.md)
 
 The current public repository supports GitHub marketplace installation. For OpenAI public directory review, GenflowAI also needs a hosted HTTPS Apps SDK/MCP endpoint such as `https://www.genflowai.io/mcp`; the existing local Codex MCP server is ready to adapt into that hosted endpoint.
+
+## MCP Ecosystem Distribution
+
+GenflowAI can also be discovered outside OpenAI through MCP-native directories and clients:
+
+- Official MCP Registry: `server.json` is prepared for the hosted remote server `https://www.genflowai.io/mcp` under `io.github.cwjgege/genflowai`.
+- Smithery: submit the hosted URL `https://www.genflowai.io/mcp`; if scanning needs manual metadata, use `https://www.genflowai.io/.well-known/mcp/server-card.json`.
+- Glama: `glama.json` identifies the GitHub maintainer for listing claim/review.
+- Cursor and MCP clients: users can add the hosted MCP URL directly when remote MCP is supported, or install the local Codex plugin package from this repository.
+
+See [MCP ecosystem distribution](docs/mcp-ecosystem-distribution.md) for submission fields, keywords, and verification commands.
