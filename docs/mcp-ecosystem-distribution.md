@@ -41,7 +41,18 @@ Registry server name:
 io.github.cwjgege/genflowai
 ```
 
-Publishing path:
+Publishing path A, recommended GitHub Actions route:
+
+1. Open the GitHub repository Actions tab.
+2. Run the workflow:
+
+```text
+Publish MCP Registry
+```
+
+The workflow validates `server.json`, authenticates with GitHub OIDC, and publishes to the official MCP Registry.
+
+Publishing path B, local CLI route:
 
 1. Install the official `mcp-publisher` CLI.
 2. Authenticate with GitHub:
